@@ -1,19 +1,27 @@
-#include<iostream>
+#include <iostream>
 using namespace std;
-class Node{
-    public:
+
+class Node {
+public:
     int data;
     Node *next;
-    Node(){}
-    Node(int value){
+
+    Node() {}
+
+    Node(int value) {
         data = value;
         next = NULL;
     }
-    void display(){
-        cout<<"Data = ",data;
+
+    void display() {
+        cout << "Data = " << data << endl;
     }
 };
-int main(){
-    Node *head;
 
+int main() {
+    Node *head = new Node(10); 
+    head->display();
+
+    delete head;
+    return 0;
 }
