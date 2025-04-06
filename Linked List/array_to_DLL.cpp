@@ -4,19 +4,19 @@ using namespace std;
 class Node{
     public:
     int data;
-    Node* prev;
-    Node* next;
+    Node *prev;
+    Node *next;
     Node(int value){
         data = value;
         prev = NULL;
         next = NULL;
     }
 };
-
 int main(){
-    vector<int>arr = {53,63,74,532,12,2414};
     Node *head = NULL;
+    Node *temp = NULL;
     Node *tail = NULL;
+    vector<int>arr = {1,2,3,4,5};
     for(int i=0;i<arr.size();i++){
         Node *newnode = new Node(arr[i]);
         if(head == NULL){
@@ -24,22 +24,20 @@ int main(){
             tail = newnode;
         }
         else{
-            tail->next = newnode;
-            newnode->prev = tail;
-            tail = newnode;
+            newnode->next = head;
+            head->prev = newnode;
+            head = newnode;
         }
     }
-    Node*ptr = head;
-    cout<<"Printing in Normal order = "<<endl;
-    while(ptr){
-        cout<<ptr->data<<" ";
-        ptr = ptr->next;
+    temp = head;
+    while(temp){
+        cout<<temp->data<<" ";
+        temp = temp->next;
     }
-    cout<<endl<<"Printing in Reverse order = "<<endl;
-    ptr = head;
-    ptr = tail;
-    while(ptr){
-        cout<<ptr->data<<" ";
-        ptr = ptr->prev;
+    cout<<endl;
+    temp = tail;
+    while(temp){
+        cout<<temp->data<<" ";
+        temp = temp->prev;
     }
 }
